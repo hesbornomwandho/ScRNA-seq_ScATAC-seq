@@ -1,3 +1,1 @@
-# ScRNA-seq_ScATAC-seq
-
-# Analysis of scRNA-seq data
+# Analysis of scRNA-seq and scATAC-seq
