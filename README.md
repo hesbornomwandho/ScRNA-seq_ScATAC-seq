@@ -4,9 +4,11 @@ Analysis of scRNA-seq for control and TGFB treated IPSCs-derived kidney organoid
 
 DIfferential accesibility analysis
 
-Ehancersand super-enahncer calling using rose alogirthm
+Enhancers and super-enhncer calling using Rose alogirthm
 
-SMAD3 motif enrichment analysis
+SMAD3 motif enrichment analysis for identified enhancers
+
+Encode analysis of filtered enhancers above and gene ontology analysis
 
 
 
