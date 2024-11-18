@@ -2,7 +2,7 @@
 
 Analysis of scRNA-seq for control and TGFB treated IPSCs-derived kidney organoid and intergration with ATAC-seq data.
 
-DIfferential accesibility analysis
+Differential accesibility analysis
 
 Enhancers and super-enhncer calling using Rose alogirthm
 
