@@ -1,4 +1,4 @@
-# Analysis of scRNA-seq and scATAC-seq to infer cis-regulatory elements in Diabetic kidney Disease
+# Analysis of scRNA-seq and scATAC-seq to infer lineage specific Tfs
 
 ## Analysis of scRNA-seq for control and TGFB treated IPSCs-treated kidney derived organoid 
 
@@ -8,7 +8,7 @@
 
 3. Differential accesibility analysis for Fibroblast ~ Myofibroblast
 
-4 .Enhancers and super-enhncer calling using Rose alogirthm
+4. Enhancers and super-enhncer calling using Rose alogirthm
 
 5. SMAD3 motif enrichment analysis for identified cis- regultory regions
 
