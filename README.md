@@ -1,14 +1,20 @@
-# Analysis of scRNA-seq and scATAC-seq
+# Analysis of scRNA-seq and scATAC-seq to infer cis-regulatory elements in Diabetic kidney Disease
 
-Analysis of scRNA-seq for control and TGFB treated IPSCs-derived kidney organoid and intergration with ATAC-seq data.
+## Analysis of scRNA-seq for control and TGFB treated IPSCs-treated kidney derived organoid 
 
-Differential accesibility analysis
+1. Quality control, clustering and Annotation
+   
+2. Intergration using scATAC-seq
 
-Enhancers and super-enhncer calling using Rose alogirthm
+3. Differential accesibility analysis for Fibroblast ~ Myofibroblast
 
-SMAD3 motif enrichment analysis for identified enhancers
+4 .Enhancers and super-enhncer calling using Rose alogirthm
 
-Encode analysis of filtered enhancers above and gene ontology analysis
+5. SMAD3 motif enrichment analysis for identified cis- regultory regions
+
+6. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq  dataset(H3K27ac,H3K4Me1,CTCF & REMAP TF)
+
+   
 
 
 
