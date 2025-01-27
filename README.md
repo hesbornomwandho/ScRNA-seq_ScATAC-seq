@@ -1,4 +1,4 @@
-# Analysis of scRNA-seq and scATAC-seq to infer lineage specific Tfs
+# Analysis of scRNA-seq and scATAC-seq to infer lineage specific TFs in Fibroblast ~ Myofibroblast transition
 
 ## Analysis of scRNA-seq for control and TGFB treated IPSCs-treated kidney derived organoid 
 
