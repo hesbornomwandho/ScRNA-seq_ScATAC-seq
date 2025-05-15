@@ -1,4 +1,4 @@
-#  Uncovering Cis-regulatory elements  in fibroblast ~ myofibroblast transition using IPSCs-kidney derived organoid model of fibrosis
+#  Uncovering Cis-regulatory elements  in fibroblast to myofibroblast transition using IPSCs-kidney derived organoid model of fibrosis
 
 ## Analysis of scRNA-seq for control and TGFB treated IPSCs-treated kidney derived organoid 
 
