@@ -18,5 +18,7 @@
 
 7. Perform enhancer ranking and annotation using (ROSE  & GREAT)
 
-8. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
+8. Motif enrichment analyis
+
+9. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
