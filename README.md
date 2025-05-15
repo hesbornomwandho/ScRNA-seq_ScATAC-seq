@@ -12,15 +12,11 @@
 
 2. Gene activity analysis & anchor identification and CCA integration
 
-3. DIfferential accesibility analysis
+3. DIfferential accesibility analysis between( Fibro ~ Myo)
 
-6. SMAD3 motif enrichment analysis for identified cis- regultory regions
+6. Linkage analysis to predict gene-cis regulatory interaction
 
-7. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq  dataset(H3K27ac,H3K4Me1,CTCF & REMAP TF)
+7. Perform enhancer ranking and annotation using (ROSE  & GREAT)
 
-   
-
-
-
-
+8. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
