@@ -18,9 +18,9 @@
 
 3. Linkage analysis to predict gene-cis regulatory interaction
 
-4. Perform enhancer ranking and annotation using (ROSE  & GREAT)
+## Perform enhancer ranking and annotation using (ROSE  & GREAT)
 
-5. Motif enrichment analyis
+1. Motif enrichment analyis
 
-6. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
+2. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
