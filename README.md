@@ -1,18 +1,22 @@
-# Analysis of scRNA-seq and scATAC-seq to infer cell type specific TFs in Fibroblast ~ Myofibroblast transition
+# Analysis of scRNA-seq and scATAC-seq to infer cell type specific cis-regulatory elements  in fibroblast ~ myofibroblast transition using IPSCs-kidney derived organoid model of fibrosis
 
 ## Analysis of scRNA-seq for control and TGFB treated IPSCs-treated kidney derived organoid 
 
-1. Quality control, clustering and Annotation
+1. Quality control, clustering and Annotation.
+
+2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets.
    
-2. Intergration using scATAC-seq
+## Analysis of chromatin accesibility (scATAC-seq)
 
-3. Differential accesibility analysis for Fibroblast ~ Myofibroblast
+1. Quality control, clustering and dimensionality reduction.
 
-4. Enhancers and super-enhncer calling using Rose alogirthm
+2. Gene activity analysis & anchor identification and CCA integration
 
-5. SMAD3 motif enrichment analysis for identified cis- regultory regions
+3. DIfferential accesibility analysis
 
-6. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq  dataset(H3K27ac,H3K4Me1,CTCF & REMAP TF)
+6. SMAD3 motif enrichment analysis for identified cis- regultory regions
+
+7. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq  dataset(H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
    
 
