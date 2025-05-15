@@ -1,0 +1,594 @@
+---
+title: "TGFBI Vs Control"
+author: "Hesborn"
+date: "2024-02-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd("~/Downloads/Crean`s")
+```
+
+
+### ANALYSIS OF KIDNEY INDUCED PLURIPOTENT STEM CELLS TO UNCOVER MOLECULAR  KIDNEY FIRBOSIS DRIVERS
+
+### CELL PRE_PROCESSING,NORMALIZATION AND CLUSTERING & ANNOTATION
+
+### R version 4.1.2
+
+
+#install.packages("Seurat") install.packages("scCATCH")
+#BiocManager::install("scater") #BiocManager::install("SingleR")
+#BiocManager::install("scRNAseq") #BiocManager::install("celldex")
+#BiocManager::install("biomaRt")
+#remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")
+#remotes::install_github("browaeysrobin/nichenetr")
+#remotes::install_github("carmonalab/STACAS")
+#install.packages("wesanderson") #install.packages("tidyverse")
+#install.packages('metap') #install.packages("dplyr")
+#devtools::install_github("thomasp85/patchwork")
+#remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
+
+
+
+```{r}
+# Load libraries
+
+library(Seurat)
+library(patchwork)
+library(cowplot)
+library(sctransform)
+library(dplyr)
+library(pheatmap)
+library(limma)
+library(glmGamPoi)
+~library(ComplexHeatmap)
+library(circlize)
+#remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
+#library(DoubletFinder)
+library(monocle3)
+#install.packages("monocle3")
+#library(SeuratWrappers)
+#library(matrixStats)
+#matrlibrary(matrixStats) # requires version 1.1.0
+#remotes::install_version("matrixStats", version="1.1.0")
+library(matrixStats)
+#library(garnett)
+library(ggplot2)
+#install.packages("openxlsx")
+library(openxlsx)
+library(RColorBrewer)
+```
+
+
+
+
+```{r}
+# Load the dataset
+control_data <- Read10X("~/Downloads/Crean`s/Control/filtered_feature_bc_matrix/filtered_feature_bc_matrix")
+
+#print(control_data)
+
+tgfb_data <- Read10X("~/Downloads/Crean`s/TFGB/filtered_feature_bc_matrix/filtered_feature_bc_matrix/")
+
+#print(tgfb_data)
+
+# Initialize the Seurat object with the raw (non-normalized data).
+control <- CreateSeuratObject(counts = control_data, 
+                              project = "Control", 
+                              min.cells = 3, 
+                              min.features = 350)
+
+tgfb <- CreateSeuratObject(counts = tgfb_data,
+                           project = "TGFB",
+                           min.cells = 3,
+                           min.features = 350)
+
+
+control$condition <- "Control"
+tgfb$condition <- "TGFB"
+#print(control)
+```
+
+
+
+```{r}
+## QC and Process each sample
+control[["percent.mt"]] <- PercentageFeatureSet(control, pattern = "^MT-")
+tgfb[["percent.mt"]] <- PercentageFeatureSet(tgfb, pattern = "^MT-")
+
+#Vizualize using violin plot before QC
+VlnPlot(control, features = c("nFeature_RNA","nCount_RNA", "percent.mt"), ncol = 3)
+control <- subset(control, subset =  nFeature_RNA > 350 & nCount_RNA >500    & percent.mt < 25)
+VlnPlot(control, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"),  ncol = 3)
+
+#Visualize using violin plot
+
+tgfb <- subset(tgfb, subset =  nFeature_RNA > 350 & nCount_RNA >500   & percent.mt < 25)
+VlnPlot(tgfb, features = c("nFeature_RNA", "nCount_RNA", "percent.mt"),  ncol = 3)
+
+print(control)
+print(tgfb)
+```
+
+```{r}
+#Data transformation for overdispersion in scRNA-seq using SCTransform
+
+control <- SCTransform(control, method = "glmGamPoi", vars.to.regress = "percent.mt",verbose = T,)
+tgfb<- SCTransform(tgfb, method = "glmGamPoi", vars.to.regress = "percent.mt",verbose = T,)
+
+
+#List your samples
+samples.list = c("control","tgfb")
+sample.list <- c(control, tgfb)
+
+#Merge the processed objects together
+seurat <- merge(x = control, y = c(tgfb), add.cell.ids = samples.list)
+
+
+#pick up 2000 features for integration
+obj.features <- SelectIntegrationFeatures(object.list = sample.list, nfeatures = 2000)
+VariableFeatures(seurat[["SCT"]]) <- obj.features
+
+```
+
+
+```{r}
+#PCA, Include = False
+PCA_npcs = 60
+seurat <- RunPCA(seurat, npcs = PCA_npcs, ) #reduce its dimensionality,  compute the first 100 PCA
+
+# Examine and visualize PCA results a few different ways
+print(seurat[["pca"]], dims = 1:5, nfeatures = 5)
+VizDimLoadings(seurat, dims = 1:2, reduction = "pca")
+# VizDimLoadings(seurat, dims = 1:4, reduction = "pca")
+
+DimPlot(seurat, reduction = "pca")
+DimHeatmap(seurat, dims = 1, cells = 500, balanced = TRUE)
+DimHeatmap(seurat, dims = 1:6, cells = 500, balanced = TRUE)
+DimHeatmap(seurat, dims = 1:10, cells = 500, balanced = TRUE)
+
+```
+
+
+
+```{r}
+#DETERMINE DIMENSIONALITY
+ElbowPlot(seurat, ndims = 100, reduction = "pca")
+
+# seurat <- RunUMAP(seurat, dims = 1:PCAElbowpoint, verbose = TRUE)
+seurat <- RunUMAP(seurat, dims = 1:40, verbose = TRUE)
+
+DimPlot(seurat, reduction = "umap")
+#Seurat(seurat)
+```
+
+
+```{r}
+# CLUSTER THE CELLS
+seurat <- FindNeighbors(seurat, dims = 1:25, verbose = TRUE)
+seurat <- FindClusters(seurat, verbose = TRUE, resolution = 0.6)
+# seurat <- FindClusters(seurat, resolution = 1.5, verbose = TRUE)
+# Look at cluster IDs of the first 5 cells
+#head(Idents(seurat), 20)
+DimPlot(seurat, reduction = "umap", group.by = "orig.ident", repel = TRUE)
+```
+
+
+```{r}
+seurat <- RunUMAP(seurat, dims = 1:15)
+DimPlot(seurat, reduction = "umap")
+
+# Visualization
+DimPlot(seurat, reduction = "umap", split.by = "orig.ident")
+DimPlot(seurat, reduction = "umap", label = TRUE, repel = TRUE)
+```
+
+```{r}
+seurat <- PrepSCTFindMarkers(seurat, assay = "SCT", verbose = TRUE)
+seurat.markers <- FindAllMarkers(seurat, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+
+ # save the output markers
+write.xlsx(seurat.markers, file = "/home/hesborn/Downloads/Crean`s")
+ 
+```
+
+
+```{r}
+# create a list of 17 cluster names based on markers compared to existing kidney cell types
+
+new.cluster.ids <- c("Kidney Progenitor 1", "Fibroblast 1", "Neural Progenitor 2", "Nephron Progenitors", "Podocytes", "Kidney progenitor 2", "Neural progenitor 1","Kidney proliferating Progenitors",  "Muscle Progenitors", "Early Nephron Progenitor","Proliferating stroma", "Glial progenitor", "Melanocyte", "Stroma 1", "Myofibroblast" ,"Fibroblast 2" , " Endothelial Cells")
+
+
+# Add the new clusters to seurat object
+names(new.cluster.ids) <- levels(seurat)
+
+
+# Plot the clusters annotated
+seurat.annotated <- RenameIdents(seurat, new.cluster.ids)
+
+DimPlot(seurat.annotated, reduction = "umap",  pt.size = 0.5)
+View(seurat.annotated)
+
+my_colors <- c("red", "blue", "green", "purple", "orange", "pink", 
+               "brown", "yellow", "cyan", "magenta", "darkgreen", "darkblue", 
+               "lightblue", "lightgreen", "gold", "darkred", "grey","black")
+
+#DimPlot(seurat.annotated, reduction = "umap", group.by = "seurat_clusters", cols = my_colors)
+
+DimPlot(seurat.annotated, reduction = "umap", pt.size = 0.5, cols = my_colors)+ NoLegend()
+
+DimPlot(seurat.annotated, reduction = "umap", label = TRUE, pt.size = 0.5, cols = my_colors) + NoLegend()
+
+saveRDS(seurat.annotated, file = "/home/hesborn/Downloads/Crean`s/seurat_annotated.rds")
+
+```
+
+
+```{r}
+# NEEDS TO BE FIXED AND SET ORDER CORRECTLY
+Idents(seurat.annotated) <- factor(Idents(seurat.annotated), levels = c("Kidney Progenitor 1", "Fibroblast 1", "Neural Progenitor 2", "Nephron Progenitors", "Podocytes", "Kidney progenitor 2", "Neural progenitor 1","Kidney proliferating Progenitors",  "Muscle Progenitors", "Early Nephron Progenitor","Proliferating stroma", "Glial progenitor", "Melanocyte", "Stroma 1", "Myofibroblast" ,"Fibroblast 2"))
+
+markers.to.plot <- c("RSPO3", "PRRX1","DCX", "CRABP2
+","PAX8","TOP2A","NEUROD1", "MKI67","MYOG","GPC3", "HIST1H1B","TTYH1","EDNRB","FST","TAGLN","TWIST1")
+DotPlot(seurat.annotated, features = markers.to.plot, cols = c("blue", "red"), dot.scale = 8) +
+    RotatedAxis()
+
+
+VlnPlot(seurat.annotated, "ACTA2")
+VlnPlot(seurat.annotated, features = "ACTA2", pt.size = 0.1, cols = c("skyblue", "salmon", "lightgreen"))
+
+VlnPlot(seurat.annotated, "PRRX1") + NoLegend()
+
+
+FeaturePlot(seurat.annotated, features = "PRRX1")
+```
+
+
+
+
+
+
+```{r}
+table(seurat.annotated$orig.ident)  # View the number of cells per cluster
+
+# Check how fibroblasts and myofibroblasts are distributed in clusters
+table(seurat.annotated$seurat_clusters, seurat.annotated@active.ident)
+
+fibroblast_clusters <- unique(seurat.annotated$seurat_clusters[seurat.annotated@active.ident == "Fibroblast 1"])
+myofibroblast_clusters <- unique(seurat.annotated$seurat_clusters[seurat.annotated@active.ident == "Myofibroblast"])
+
+# Extract Fibroblast and Myofibroblast clusters
+fibro_myofibro_sub <- subset(seurat.annotated, idents = c("Fibroblast 1","Myofibroblast", "Fibroblast 2", "Stroma 1"))
+
+# Check if the subset worked
+DimPlot(fibro_myofibro_sub, label = TRUE) + NoLegend()
+
+```
+
+
+
+
+```{r}
+
+# Perform trajectory inference
+
+library(monocle3)
+library(SeuratWrappers)
+
+# Convert subsetted Seurat object to Monocle3
+cds <- SeuratWrappers::as.cell_data_set(fibro_myofibro_sub)
+
+# Preprocess and reduce dimensions
+cds <- preprocess_cds(cds, num_dim = 50)
+cds <- reduce_dimension(cds, reduction_method = "UMAP")
+cds <- cluster_cells(cds)
+cds <- learn_graph(cds)
+cds <- order_cells(cds)
+
+# Plot trajectory
+plot_cells(cds, color_cells_by = "pseudotime", show_trajectory_graph = TRUE)
+
+
+colnames(colData(cds))
+
+```
+
+```{r}
+
+# Define 10 genes of interest (replace with your genes)
+genes_of_interest <- c("ACTA2", "COL1A1", "VIM", "FN1", "PDGFRB", 
+                       "POSTN")
+# Subset Seurat object to include only these cell types
+fibro_subset <- subset(seurat.annotated, idents = c("Fibroblast 1", "Fibroblast 2", "Myofibroblast"))
+
+# Extract scaled expression data for the selected genes
+expr_matrix <- GetAssayData(fibro_subset, layer =   "scale.data")[genes_of_interest, ]
+
+# Convert to a dataframe for visualization
+expr_df <- as.data.frame(expr_matrix)
+
+library(pheatmap)
+
+# Generate heatmap
+pheatmap(expr_df, cluster_rows = TRUE, cluster_cols = TRUE, scale = "row",
+         main = "Heatmap of 10 Genes in Fibroblast and Myofibroblast",
+         color = colorRampPalette(c("blue", "white", "red"))(50))
+
+ggsave("heatmap_fibroblast_myofibroblast.png", width = 8, height = 6, dpi = 300)
+
+```
+
+
+
+
+```{r}
+# Assign active identities (correct cell annotations)
+metadata <- seurat.annotated@meta.data
+metadata$cell_type <- as.character(Idents(seurat.annotated))  # Convert factor to character for proper labeling
+
+# Count the number of cells per annotation per condition
+cell_counts <- metadata %>%
+  group_by(condition, cell_type) %>%
+  summarise(count = n(), .groups = "drop")
+
+# Convert to dataframe
+cell_counts_df <- as.data.frame(cell_counts)
+
+# Save to CSV
+write.csv(cell_counts_df, "cell_counts_by_condition.csv", row.names = FALSE)
+
+# Generate the bar plot with correct cell type labels
+ggplot(cell_counts_df, aes(x = cell_type, y = count, fill = condition)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_classic() +  # White background
+  labs(title = "Cell Type Distribution for Control and TGFB",
+       x = "Cell Type",
+       y = "Cell Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+
+# Save the plot
+ggsave("cell_annotation_barplot.png", width = 10, height = 6, dpi = 300)
+
+```
+
+
+```{r}
+levels(Idents(sub_obj))
+
+cluster_colors <- Idents(sub_obj) |> levels() |> setNames(Seurat::DiscretePalette(4))
+
+cluster_colors <- c(
+ "Fibroblast 1"  = "#1f78b4",
+  "Fibroblast 2"  = "#33a02c",
+  "Myofibroblast" = "#e31a1c",
+  "Stroma 1"      = "#ff7f00"
+)
+
+seurat.annotated <- readRDS("~/Downloads/Crean`s/seurat_annotated.rds")
+
+DimPlot(seurat.annotated, reduction = "umap")
+
+DimPlot(seurat.annotated, reduction = "umap", label = TRUE) + NoLegend()
+
+#View(seurat.annotated@active.ident)
+
+# View metadata columns
+#head(seurat.annotated1@active.ident)
+
+# Print unique cluster annotations
+#table(seurat.annotated$seurat_clusters, seurat.annotated@active.ident)
+# Show unique annotations
+#unique(seurat.annotated@active.ident)
+
+# Subset the desired identities
+sub_obj <- subset(seurat.annotated, idents = c("Fibroblast 1", "Fibroblast 2", "Myofibroblast", "Stroma 1"))
+
+
+DimPlot(sub_obj, reduction = "umap", label = TRUE, repel = TRUE) +
+  ggtitle("Fibroblast & Myofibroblast") +
+  NoLegend()
+
+genes_to_plot <- c("ACTA2", "COL1A1", "VIM", "TAGLN", "FN1", "PRRX1", "TAGLN","OGN","TWIST1" ,"MET","POSTN",
+                   "MFAP4", "ADAMTS6", "COL3A1", "JUN","DCN")
+
+#sub_obj <- ScaleData(sub_obj, features = genes_found)
+
+DoHeatmap(
+  object = sub_obj,
+  features = genes_to_plot,
+  group.by = "ident",  # uses cluster identities (Fibroblast 1, etc.)
+  size = 3
+) + 
+  ggtitle("Fibroblast & Myofibroblast Gene Expression")
+
+
+VlnPlot(
+  object = sub_obj,
+  features = genes_to_plot,
+  #group.by = "ident",
+  pt.size = 0,
+  stack = TRUE,
+  flip = TRUE,
+  slot = "data",
+  cols = cluster_colors
+  
+) +
+  theme(
+    axis.text.y = element_text(size = 9),
+    axis.text.x = element_text(size = 9, angle = 10, hjust = 1),
+    strip.text.y = element_text(size = 8),
+    plot.title = element_text(size = 12, face = "bold"),
+    plot.margin = margin(5, 5, 5, 5),
+    panel.grid = element_blank()
+  ) + NoLegend()
+  ggtitle(" Fibroblast Subtypes")
+  
+  
+  VlnPlot(
+  object = sub_obj,
+  features = genes_to_plot,
+  pt.size = 0,
+  stack = TRUE,
+  flip = TRUE,
+  slot = "data",
+  #group.by = "ident",
+  cols = cluster_colors
+) +
+  theme_classic(base_size = 9) +
+  theme(
+    axis.text.y = element_text(size = 8),
+    axis.text.x = element_text(size = 8, angle = 10, hjust = 1),
+    strip.text.y = element_text(size = 8),
+    plot.title = element_text(size = 11, face = "bold"),
+    plot.margin = margin(5, 5, 5, 5),
+    panel.grid = element_blank()
+  ) +
+  NoLegend() +
+  ggtitle("Fibroblast Subtypes: Expression by Cluster Color")
+
+  
+  
+ ggsave(
+  filename = "~/Downloads/Crean`s/slim_stacked_violin.png",
+  dpi = 600,
+  width = 5,    # narrower
+  height = 4.5, # more compact vertically
+  units = "in",
+  bg = "white"
+)
+
+
+ggsave(filename = "~/Downloads/Crean`s/stacked_violin.png", dpi = 600, width = 8, height = 6)
+
+
+DimPlot(sub_obj,  repel = TRUE, cols = cluster_colors) +
+  ggtitle(" Fibroblast Subtypes in Organoid")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+# Step 1: Get expression data
+plot_data <- FetchData(sub_obj, vars = genes_to_plot) %>%
+  mutate(cluster = Idents(sub_obj))
+
+# Step 2: Reshape to long format
+plot_data_long <- pivot_longer(
+  plot_data,
+  cols = all_of(genes_to_plot),
+  names_to = "gene",
+  values_to = "expression"
+)
+
+# Step 3: Factor levels
+plot_data_long$cluster <- factor(plot_data_long$cluster, levels = names(cluster_colors))
+plot_data_long$gene <- factor(plot_data_long$gene, levels = genes_to_plot)
+
+# Step 4: Faceted violin plot
+ggplot(plot_data_long, aes(x = cluster, y = expression, fill = cluster)) +
+  geom_violin(scale = "width", trim = TRUE, width = 0.8) +
+  facet_wrap(~ gene, ncol = 3, scales = "free_y") +
+  scale_fill_manual(values = cluster_colors) +
+  theme_classic(base_size = 12) +  # Increase base font size
+  labs(
+    title = "Expression of Selected Genes",
+    x = NULL,
+    y = "Expression"
+  ) +
+  theme(
+    legend.position = "none",
+    strip.text = element_text(face = "bold", size = 12),  # ← Bigger facet titles
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 11, face = "bold"),  # ← Cluster names
+    axis.text.y = element_text(size = 10)
+  )
+
+
+ggsave(filename = "~/Downloads/Crean`s/Expression2_subtypes.png", dpi = 600, width = 8, height = 6)
+
+```
+```{r}
+
+# Make sure identities are set correctly
+Idents(sub_obj) <- factor(Idents(sub_obj), levels = names(cluster_colors))
+
+# Create UMAP plot with matching colors
+DimPlot(
+  sub_obj,
+  reduction = "umap",
+  label = TRUE,
+  repel = TRUE,
+  cols = cluster_colors
+) +
+  ggtitle(" Fibroblast Subtypes in Organoid") +
+  theme_classic(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5)
+    #legend.position = "none"
+  )+ legend()
+
+ggsave(filename = "~/Downloads/Crean`s/fibroblast2_subtypes.png", dpi = 600, width = 8, height = 6)
+
+```
+
+```{r}
+# Load required libraries
+library(Seurat)
+library(SeuratWrappers)
+library(monocle3)
+library(ggplot2)
+
+# Step 1: Subset Seurat object to 4 clusters
+clusters_of_interest <- c("Fibroblast 1", "Fibroblast 2", "Myofibroblast", "Stroma 1")
+sub_seurat <- subset(sub_obj, idents = clusters_of_interest)
+
+# Step 2: Convert to Monocle3 CellDataSet
+cds <- as.cell_data_set(sub_seurat)
+
+# Step 3: Add cluster labels
+cds@colData$cluster <- Idents(sub_seurat)
+
+# Step 4: Transfer UMAP embeddings
+cds@int_colData@listData$reducedDims$UMAP <- Embeddings(sub_seurat, "umap")
+
+# Step 5: Re-cluster and learn the trajectory graph
+cds <- cluster_cells(cds, reduction_method = "UMAP")
+cds <- learn_graph(cds, use_partition = FALSE)
+
+# Step 6: Choose root cell (from Fibroblast 1)
+root_cell <- colnames(sub_seurat)[which(Idents(sub_seurat) == "Fibroblast 1")[1]]
+cds <- order_cells(cds, root_cells = root_cell)
+
+# Step 7: Plot trajectory (no extra branches labeled)
+plot_cells(
+  cds,
+  color_cells_by = "cluster",
+  label_groups_by_cluster = TRUE,
+  label_leaves = TRUE,
+  label_branch_points = FALSE,   # <-- hide extra branching nodes
+  graph_label_size = 4
+) +
+  ggtitle("Trajectory Inference: 4 Fibroblast Clusters") +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 14))
+
+```
