@@ -1,8 +1,8 @@
-#  Uncovering cis-regulatory elements  in fibroblast to myofibroblast transition using iPSCs-kidney derived organoid model of kidney fibrosis
+# Single cell multi-omics to uncover cis-regulatory elements  in stromal cell  activation using iPSCs-kidney derived organoid a model of kidney fibrosis
 
 ## Analysis of gene expression (scRNA-seq) 
 
-1. Quality control, clustering and Annotation.
+1. Quality control, normalisation, clustering and annotation of control & tgb1 treated iPSCs-kidney derived organoid.
 
 2. Sub-clusting of fibroblast population & comparative with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
 
