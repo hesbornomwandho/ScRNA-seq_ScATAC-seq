@@ -9,7 +9,7 @@ The open
 
       <img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/93279d09-4398-4596-84f8-c10108c10f0f" />
   
-## Analysis of chromatin accesibility (scATAC-seq) in signac
+## Analysis of chromatin accesibility (scATAC-seq) in [signac](https://stuartlab.org/signac/)
 
 1. Quality control, clustering and dimensionality reduction.
 
@@ -21,9 +21,9 @@ The open
 
    <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
-## Enhancer and Super-enhancer ranking and annotation using (ROSE & GREAT tools)
+## Enhancer and Super-enhancer ranking and annotation using ([ROSE](https://github.com/stjude/ROSE) & [GREAT](https://great-help.atlassian.net/wiki/spaces/GREAT/overview))
 
-1. Motif enrichment analyis, SMAD3 enriched regions
+1. Motif enrichment analyis to infer SMAD3 TF enriched regions
 
 2. Comparative validataion of identified putative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
