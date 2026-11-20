@@ -27,3 +27,18 @@
 2. Comparative validataion of identified putative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
+
+# R Package Installation Guide
+
+This README provides instructions for installing common bioinformatics and visualization R packages used in single-cell RNA-seq analysis and data visualization.
+
+## Installation Instructions
+
+You can install the packages directly from CRAN or Bioconductor, or from GitHub where applicable.
+
+### Install from CRAN
+
+Open your R console or RStudio and run:
+
+```r
+install.packages(c("patchwork", "cowplot", "pheatmap", "ggplot2", "ggvennDiagram"))
