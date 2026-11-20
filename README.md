@@ -12,17 +12,17 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
 2. Gene activity analysis & anchor identification for CCA integration.
 
-3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast) to infer putataive regulatory regions
+3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast) to infer putataive regulatory regions.
 
-3. Linkage analysis to predict gene-cis regulatory interaction using [cicero](https://github.com/cole-trapnell-lab/cicero-release)
+3. Linkage analysis to predict gene-cis regulatory interaction using [cicero](https://github.com/cole-trapnell-lab/cicero-release).
 
    <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
 ## Enhancer and super-enhancer ranking and annotation using ([ROSE](https://github.com/stjude/ROSE) & [GREAT](https://great-help.atlassian.net/wiki/spaces/GREAT/overview))
 
-1. Motif enrichment analyis to infer SMAD3 TF enriched regions using [Homer](http://homer.ucsd.edu/homer/)
+1. Motif enrichment analyis to infer SMAD3 TF enriched regions using [Homer](http://homer.ucsd.edu/homer/).
 
-2. Comparative validataion of identified putative enhanncers using [Encode](https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm10&lastVirtModeType=default&lastVirtMode) fibroblast chip-seq,HI-C datasets (H3K27ac,H3K4Me1,CTCF & REMAP TF)
+2. Comparative validataion of identified putative enhanncers using [Encode](https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm10&lastVirtModeType=default&lastVirtMode) fibroblast chip-seq,HI-C datasets (H3K27ac,H3K4Me1,CTCF & REMAP TF).
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
 
