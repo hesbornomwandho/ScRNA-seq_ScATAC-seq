@@ -8,17 +8,17 @@
 
       <img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/93279d09-4398-4596-84f8-c10108c10f0f" />
   
-## Analysis of chromatin accesibility (scATAC-seq)
+## Analysis of chromatin accesibility (scATAC-seq) in signac
 
 1. Quality control, clustering and dimensionality reduction.
 
-##  Gene expression and chromatin accesibility intergration
+2. Gene activity analysis & anchor identification CCA integration
 
-1. Gene activity analysis & anchor identification CCA integration
-
-2. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast)
+3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast)
 
 3. Linkage analysis to predict gene-cis regulatory interaction using cicero
+
+   <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
 ## Perform enhancer ranking and annotation using (ROSE & GREAT)
 
@@ -26,3 +26,4 @@
 
 2. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
+<img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
