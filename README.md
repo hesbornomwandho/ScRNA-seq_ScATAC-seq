@@ -22,7 +22,7 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
 1. Motif enrichment analyis to infer SMAD3 TF enriched regions using [Homer](http://homer.ucsd.edu/homer/)
 
-2. Comparative validataion of identified putative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
+2. Comparative validataion of identified putative enhanncers using [Encode](https://genome.ucsc.edu/cgi-bin/hgTracks?db=mm10&lastVirtModeType=default&lastVirtMode) fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
 
