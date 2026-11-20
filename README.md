@@ -1,6 +1,6 @@
 # Single cell multi-omics to uncover cis-regulatory elements  in stromal cell  activation using iPSCs-kidney derived organoid a model of kidney fibrosis
 
-## Analysis of gene expression (scRNA-seq) 
+## Analysis of scRNA-seq dataset
 
 1. Quality control, normalisation, clustering and annotation of control & tgb1 treated iPSCs-kidney derived organoid.
 
