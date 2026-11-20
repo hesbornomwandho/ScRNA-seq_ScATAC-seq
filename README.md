@@ -20,10 +20,10 @@
 
    <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
-## Perform enhancer and Super enhancer ranking and annotation using (ROSE & GREAT tools)
+## Enhancer and Super-enhancer ranking and annotation using (ROSE & GREAT tools)
 
-1. Motif enrichment analyis
+1. Motif enrichment analyis, SMAD3 enriched regions
 
-2. Comparative validataion of identified puatative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
+2. Comparative validataion of identified putative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
