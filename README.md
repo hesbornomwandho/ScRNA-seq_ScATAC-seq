@@ -1,14 +1,13 @@
 # Uncovering enhancers and super-enhancers implicated in stromal cell  activation using induced Pluripotent Stem Cells-TGFB1 kidney derived organoids a model of kidney fibrosis
 The epigenetic regulation has emerged as an important mechanism through which extracellular injury signals may be translated into sustained changes in gene expression and cellular behaviour. My aim is to understand the epigenetic landscape driving the expression of ECM genes implicated in fibrosis and provide a computational analysis of putative loci for CRISPRi for functional validation. We aim that this loci can reduce the ECM turn over with therapeutic value.
 
-## Analysis of scRNA-seq dataset in [Seurat](https://satijalab.org/seurat/)
+## Analysis of scRNA-seq dataset in [seurat](https://satijalab.org/seurat/)
 1. Quality control, normalisation, clustering and annotation of control & tgb1 treated IPSCs-kidney derived organoid.
 2. Sub-clusting of fibroblast population & comparative analysisi with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
 
       <img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/93279d09-4398-4596-84f8-c10108c10f0f" />
   
 ## Analysis of chromatin accesibility (scATAC-seq) in [signac](https://stuartlab.org/signac/)
-
 1. Quality control, clustering and dimensionality reduction.
 
 2. Gene activity analysis & anchor identification for CCA integration.
