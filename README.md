@@ -1,4 +1,4 @@
-#  Uncovering Cis-regulatory elements  in fibroblast to myofibroblast transition using IPSCs-kidney derived organoid model of fibrosis
+#  Uncovering cis-regulatory elements  in fibroblast to myofibroblast transition using iPSCs-kidney derived organoid model of kidney fibrosis
 
 ## Analysis of gene expression (scRNA-seq) 
 
@@ -14,11 +14,11 @@
 
 1. Gene activity analysis & anchor identification and CCA integration
 
-2. DIfferential accesibility analysis between( Fibro ~ Myo)
+2. DIfferential accesibility analysis between( Fibroblast ~ Myofibroblast)
 
 3. Linkage analysis to predict gene-cis regulatory interaction
 
-## Perform enhancer ranking and annotation using (ROSE  & GREAT)
+## Perform enhancer ranking and annotation using (ROSE & GREAT)
 
 1. Motif enrichment analyis
 
