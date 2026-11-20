@@ -7,7 +7,7 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
       <img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/93279d09-4398-4596-84f8-c10108c10f0f" />
   
-## Analysis of chromatin accesibility (scATAC-seq) in [signac](https://stuartlab.org/signac/)
+## Analysis of scATAC-seq dataset in [signac](https://stuartlab.org/signac/)
 1. Quality control, clustering and dimensionality reduction.
 
 2. Gene activity analysis & anchor identification for CCA integration.
