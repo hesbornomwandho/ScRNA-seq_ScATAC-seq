@@ -17,7 +17,7 @@ The open
 
 3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast)
 
-3. Linkage analysis to predict gene-cis regulatory interaction using cicero
+3. Linkage analysis to predict gene-cis regulatory interaction using [cicero]{https://github.com/cole-trapnell-lab/cicero-release}
 
    <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
