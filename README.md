@@ -1,4 +1,5 @@
-# Single cell multi-omics to uncover enhancers and super-enhancers  in stromal cell  activation using iPSCs-kidney derived organoid a model of kidney fibrosis
+# Uncovering enhancers and super-enhancers implicated in stromal cell  activation using iPSCs-tgfb1 kidney derived organoids a model of kidney fibrosis
+The epigenetic regulation has emerged as an important mechanism through which extracellular injury signals may be translated into sustained changes in gene expression and cellular behaviour <img width="468" height="39" alt="image" src="https://github.com/user-attachments/assets/d3c18189-0494-4547-b3d2-c75585666a3c" />
 
 
 ## Analysis of scRNA-seq dataset in [Seurat](https://satijalab.org/seurat/)
