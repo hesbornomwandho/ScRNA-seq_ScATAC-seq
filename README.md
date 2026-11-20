@@ -2,7 +2,7 @@
 The epigenetic regulation has emerged as an important mechanism through which extracellular injury signals may be translated into sustained changes in gene expression and cellular behaviour. My aim is to understand the epigenetic landscape driving the expression of ECM genes implicated in fibrosis and provide a computational analysis of putative loci for CRISPRi for functional validation. We aim that this loci can reduce the ECM turn over with therapeutic value.
 
 ## Analysis of scRNA-seq dataset in [seurat](https://satijalab.org/seurat/)
-1. Quality control, normalisation, clustering and annotation of control & tgb1 treated IPSCs-kidney derived organoid.
+1. Quality control, normalisation, clustering and annotation of control & tgb1 treated iPSCs-kidney derived organoid.
 2. Sub-clusting of fibroblast population & comparative analysisi with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
 
       <img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/93279d09-4398-4596-84f8-c10108c10f0f" />
@@ -26,7 +26,7 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
 
-# R Package installation guide for reproducible
+# R Package installation guide for reproducible analysis
 
 This  instructions for installing  bioinformatics and visualization R packages used in scRNA-seq and data visualization.
 
@@ -36,7 +36,7 @@ You can install the packages directly from CRAN or Bioconductor, or from GitHub 
 
 ### Install from CRAN
 
-Open your R console or RStudio and run:
+Open  R console or RStudio and run:
 
 ```r
-install.packages(c("patchwork","Signac","cowplot"," Seurat","sctransform", "DoubletFinder", "monocle3", "pheatmap", "ggplot2", "ggvennDiagram"))
+install.packages(c("patchwork","Signac","cowplot","Seurat","sctransform","glmGampoi","DoubletFinder", "monocle3", "pheatmap", "ggplot2", "ggvennDiagram"))
