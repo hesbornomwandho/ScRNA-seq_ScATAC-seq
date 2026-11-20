@@ -10,7 +10,7 @@
 
 1. Quality control, clustering and dimensionality reduction.
 
-   ![ScRNA workflow](<img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/934d1077-3241-49e6-83c1-1779e768d490" />)
+   ![ScRNA workflow](img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/934d1077-3241-49e6-83c1-1779e768d490)
 
 
 ##  Gene expression and chromatin accesibility intergration
