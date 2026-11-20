@@ -3,9 +3,9 @@
 
 ## Analysis of scRNA-seq dataset in [Seurat](https://satijalab.org/seurat/)
 
-1. Quality control, normalisation, clustering and annotation of control & tgb1 treated iPSCs-kidney derived organoid.
+1. Quality control, normalisation, clustering and annotation of control & tgb1 treated ipscs-kidney derived organoid.
 
-2. Sub-clusting of fibroblast population & comparative with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
+2. Sub-clusting of fibroblast population & comparative analysisi with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
 
       <img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/93279d09-4398-4596-84f8-c10108c10f0f" />
   
@@ -15,7 +15,7 @@
 
 2. Gene activity analysis & anchor identification for CCA integration.
 
-3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast)
+3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast) to infer putataive regulatory regions
 
 3. Linkage analysis to predict gene-cis regulatory interaction using [cicero](https://github.com/cole-trapnell-lab/cicero-release)
 
