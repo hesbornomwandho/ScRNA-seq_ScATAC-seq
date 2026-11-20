@@ -4,7 +4,7 @@
 
 1. Quality control, clustering and Annotation.
 
-2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
+2. Sub-clusting of fibroblast population & comparative with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
 
       ![ScRNA workflow](<img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/aa5ebc2c-d970-4757-847e-f30c7912970b" />)
 )
