@@ -30,7 +30,7 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
 This  instructions for installing  bioinformatics and visualization R packages used in scRNA-seq and data visualization.
 
-## Installation Instructions
+## Installation instructions
 
 You can install the packages directly from CRAN or Bioconductor, or from GitHub where applicable.
 
