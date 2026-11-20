@@ -6,14 +6,12 @@
 
 2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
 
-   
+      ![ScRNA workflow](<img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/aa5ebc2c-d970-4757-847e-f30c7912970b" />
+)
    
 ## Analysis of chromatin accesibility (scATAC-seq)
 
 1. Quality control, clustering and dimensionality reduction.
-
-   ![ScRNA workflow](img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/934d1077-3241-49e6-83c1-1779e768d490)
-
 
 ##  Gene expression and chromatin accesibility intergration
 
