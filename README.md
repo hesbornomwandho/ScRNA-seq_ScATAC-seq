@@ -4,7 +4,9 @@
 
 1. Quality control, clustering and Annotation.
 
-2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785).
+2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785) & [ECM-receptor data](https://www.kegg.jp/pathway/hsa04512)
+
+   
    
 ## Analysis of chromatin accesibility (scATAC-seq)
 
