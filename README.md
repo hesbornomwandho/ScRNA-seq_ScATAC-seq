@@ -26,7 +26,7 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
 
-# R Package installation guide for reproducible analysis
+# R package installation guide for reproducible analysis
 
 This  instructions for installing  bioinformatics and visualization R packages used in scRNA-seq and data visualization.
 
