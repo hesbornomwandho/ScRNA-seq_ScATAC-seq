@@ -1,5 +1,5 @@
 # Uncovering enhancers and super-enhancers implicated in stromal cell  activation using induced Pluripotent Stem Cells-TGFB1 kidney derived organoids a model of kidney fibrosis
-The epigenetic regulation has emerged as an important mechanism through which extracellular injury signals may be translated into sustained changes in gene expression and cellular behaviour. My aim is to understand the epigenetic landscape driving the expression of ECM genes implicated in fibrosis and provide a computational analysis of putative loci for CRISPRi for functional validation. We aim that this loci can reduce the ECM turn over with therapeutic value.
+The epigenetic regulation has emerged as an important mechanism through which extracellular injury signals may be translated into sustained changes in gene expression and cellular behaviour. My aim is to understand the epigenetic landscape driving the expression of ECM genes implicated in fibrosis and provide a computational analysis of putative loci for CRISPRi for functional validation. We aim that this loci can reduce the ECM turn over with therapeutic value and ameliorate CKD.
 
 ## Analysis of scRNA-seq dataset in [seurat](https://satijalab.org/seurat/)
 1. Quality control, normalisation, clustering and annotation of control & tgb1 treated iPSCs-kidney derived organoid.
