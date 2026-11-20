@@ -4,11 +4,14 @@
 
 1. Quality control, clustering and Annotation.
 
-2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets.
+2. Sub-clusting of fibroblast population & comparison with existing kidney patient datasets [CKD patient data ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE211785).
    
 ## Analysis of chromatin accesibility (scATAC-seq)
 
 1. Quality control, clustering and dimensionality reduction.
+
+   ![ScRNA workflow](<img width="453" height="301" alt="image" src="https://github.com/user-attachments/assets/934d1077-3241-49e6-83c1-1779e768d490" />)
+
 
 ##  Gene expression and chromatin accesibility intergration
 
