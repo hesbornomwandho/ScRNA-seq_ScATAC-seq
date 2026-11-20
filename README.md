@@ -12,7 +12,7 @@
 
 1. Quality control, clustering and dimensionality reduction.
 
-2. Gene activity analysis & anchor identification CCA integration
+2. Gene activity analysis & anchor identification for CCA integration.
 
 3. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast)
 
@@ -20,7 +20,7 @@
 
    <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
-## Perform enhancer ranking and annotation using (ROSE & GREAT)
+## Perform enhancer and Super enhancer ranking and annotation using (ROSE & GREAT tools)
 
 1. Motif enrichment analyis
 
