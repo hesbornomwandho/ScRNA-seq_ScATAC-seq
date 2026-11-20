@@ -12,11 +12,11 @@
 
 ##  Gene expression and chromatin accesibility intergration
 
-1. Gene activity analysis & anchor identification and CCA integration
+1. Gene activity analysis & anchor identification CCA integration
 
-2. DIfferential accesibility analysis between( Fibroblast ~ Myofibroblast)
+2. DIfferential accesibility analysis between (Fibroblast ~ Myofibroblast)
 
-3. Linkage analysis to predict gene-cis regulatory interaction
+3. Linkage analysis to predict gene-cis regulatory interaction using cicero
 
 ## Perform enhancer ranking and annotation using (ROSE & GREAT)
 
