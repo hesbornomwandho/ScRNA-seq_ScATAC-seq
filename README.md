@@ -18,9 +18,9 @@ The epigenetic regulation has emerged as an important mechanism through which ex
 
    <img width="435" height="572" alt="image" src="https://github.com/user-attachments/assets/8ac19e61-203c-4d88-99c6-afe7a6370f15" />
 
-## Enhancer and Super-enhancer ranking and annotation using ([ROSE](https://github.com/stjude/ROSE) & [GREAT](https://great-help.atlassian.net/wiki/spaces/GREAT/overview))
+## Enhancer and super-enhancer ranking and annotation using ([ROSE](https://github.com/stjude/ROSE) & [GREAT](https://great-help.atlassian.net/wiki/spaces/GREAT/overview))
 
-1. Motif enrichment analyis to infer SMAD3 TF enriched regions
+1. Motif enrichment analyis to infer SMAD3 TF enriched regions using [Homer](http://homer.ucsd.edu/homer/)
 
 2. Comparative validataion of identified putative enhanncers using Encode fibroblast chip-seq,HI-C dataset (H3K27ac,H3K4Me1,CTCF & REMAP TF)
 
