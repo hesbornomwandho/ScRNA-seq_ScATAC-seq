@@ -28,9 +28,10 @@
 
 <img width="453" height="247" alt="image" src="https://github.com/user-attachments/assets/54815aa5-4653-472d-8188-23dd6501b452" />
 
-# R Package Installation Guide
 
-This README provides instructions for installing common bioinformatics and visualization R packages used in single-cell RNA-seq analysis and data visualization.
+# R Package installation guide for reproducible
+
+This  instructions for installing  bioinformatics and visualization R packages used in scRNA-seq and data visualization.
 
 ## Installation Instructions
 
@@ -41,4 +42,4 @@ You can install the packages directly from CRAN or Bioconductor, or from GitHub 
 Open your R console or RStudio and run:
 
 ```r
-install.packages(c("patchwork", "cowplot", "pheatmap", "ggplot2", "ggvennDiagram"))
+install.packages(c("patchwork","Signac","cowplot"," Seurat","sctransform", "DoubletFinder", "monocle3", "pheatmap", "ggplot2", "ggvennDiagram"))
