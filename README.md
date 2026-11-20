@@ -1,7 +1,7 @@
-# Single cell multi-omics to uncover cis-regulatory elements  in stromal cell  activation using iPSCs-kidney derived organoid a model of kidney fibrosis
-The open
+# Single cell multi-omics to uncover enhancers and super-enhancers  in stromal cell  activation using iPSCs-kidney derived organoid a model of kidney fibrosis
 
-## Analysis of scRNA-seq dataset
+
+## Analysis of scRNA-seq dataset in [Seurat](https://satijalab.org/seurat/)
 
 1. Quality control, normalisation, clustering and annotation of control & tgb1 treated iPSCs-kidney derived organoid.
 
